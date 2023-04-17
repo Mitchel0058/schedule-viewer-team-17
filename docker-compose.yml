@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  schedule:
+    container_name: schedule
+    build: ./schedule
+    volumes:
+      - ./schedule/code:/usr/src/app
+    networks:
+      - scheduler
+    ports:
+      - "3010:3010"
+    working_dir: /usr/src/app
+    command: bash -c "npm install && npm run dev"
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    volumes:
+      - ./frontend/code:/usr/src/app
+    networks:
+      - scheduler
+    ports:
+      - "3020:3020"
+    working_dir: /usr/src/app
+    command: bash -c "npm install && npm run dev"
+
+networks:
+  scheduler:
+    driver: bridge
