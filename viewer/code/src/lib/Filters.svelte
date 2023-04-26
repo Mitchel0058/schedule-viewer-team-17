@@ -1,8 +1,10 @@
 <script>
     import Filter from "./components/filters/Filter.svelte";
 
+    const selectedCardProperties = [];
+
     const handleCardfilter = (event) => {
-        //
+        // if all reset all filters
         // data-card-property="course-name"
         const target = event.target;
         console.log(target);
@@ -21,7 +23,10 @@
 
     const handleSelectedFilter = (event) => {
         const target = event.target;
-
+        /**
+         * If all is selected
+         *      remove all the hidden elements
+         */
         // remove styling previous selected elements.
         const previousSelectedFilters =
             document.querySelectorAll(".bg-violet-400");
