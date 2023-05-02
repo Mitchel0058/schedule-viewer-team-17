@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "Schedule",
+    "program": "hbo-ict",
+    "year": 2,
+    "semester": 1,
+    "data": [
+      {
+        "week": 37,
+        "mo": [
+          {
+            "starttime": "09.00",
+            "endtime": "10.00",
+            "course_code": "CU75016V1",
+            "course_name": "UVE",
+            "module": "Theory",
+            "subject": "Introduction",
+            "type": "Lesson",
+            "group": "ICT2",
+            "students": 75,
+            "room": "GW319",
+            "teachers": ["Zelle"]
+          }
+        ],
+        "tu": [{}]
+      }
+    ]
+  }
+}

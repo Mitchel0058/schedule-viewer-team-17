@@ -4,25 +4,25 @@ export async function getScheduleData(req, res) {
   res.send(schedule);
 }
 
-export async function getProperties(req, res){
+export async function getProperties(req, res) {
   const properties = ['Course_name', 'Start', 'End', 'Subject', 'Groepen', 'Docenten', 'Lokalen'];
   res.send(properties);
 }
 
-export async function getGroups(req,res){
-  let allGroups = getUniqueElements('Groepen');
+export async function getGroups(req, res) {
+  let allGroups = getUniqueElements('groups');
   res.send(allGroups);
 }
-export async function getWeeks(req,res){
+export async function getWeeks(req, res) {
   let allWeeks = [];
-  schedule.data.forEach((week)=>{
+  schedule.data.forEach((week) => {
     allWeeks.push(week.weeknr);
   });
   res.send(allWeeks);
 }
 
 export async function getTeacher(req, res) {
-  let allTeachers = getUniqueElements('Docenten');
+  let allTeachers = getUniqueTeachers('teachers');
   res.send(allTeachers);
   // let teachers = [];
   // let uniqueNames;
@@ -61,7 +61,80 @@ export async function getTeacher(req, res) {
   // res.send(uniqueNames);
 }
 
-function getUniqueElements(searchTerm){
+
+
+function getUniqueTeachers(searchTerm) {
+  //let allElements = [];
+  let uniqueElements = [];
+  schedule.data.forEach((week) => {
+    [...week.mo].forEach((day) => {
+      // console.log(`week: ${day.Week} = ${day[searchTerm]}`);
+      // const str = day[searchTerm];
+      // console.log(str);
+      // let explodedElements = str.split(';');
+      // allElements = allElements.concat(explodedElements);
+      const allTeachers = day[searchTerm];
+      allTeachers.forEach((teacher) => {
+        uniqueElements.push(teacher)
+      });
+      // uniqueElements.push(day[searchTerm]);
+      // uniqueElements = [...new Set(day[searchTerm])];
+    });
+    [...week.tu].forEach((day) => {
+      // console.log(`week: ${day.Week} = ${day[searchTerm]}`);
+      // const str = day[searchTerm];
+      // let explodedElements = str.split(';');
+      // allElements = allElements.concat(explodedElements);
+      // uniqueElements.push(day[searchTerm]);
+      const allTeachers = day[searchTerm];
+      allTeachers.forEach((teacher) => {
+        uniqueElements.push(teacher)
+      });
+      // uniqueElements = [...new Set(day[searchTerm])];
+    });
+    [...week.we].forEach((day) => {
+      // console.log(`week: ${day.Week} = ${day[searchTerm]}`);
+      // const str = day[searchTerm];
+      // let explodedElements = str.split(';');
+      // allElements = allElements.concat(explodedElements);
+      // uniqueElements.push(day[searchTerm]);
+      const allTeachers = day[searchTerm];
+      allTeachers.forEach((teacher) => {
+        uniqueElements.push(teacher)
+      });
+      // uniqueElements = [...new Set(day[searchTerm])];
+    });
+    [...week.th].forEach((day) => {
+      // console.log(`week: ${day.Week} = ${day[searchTerm]}`);
+      // const str = day[searchTerm];
+      // let explodedElements = str.split(';');
+      // allElements = allElements.concat(explodedElements);
+      // uniqueElements.push(day[searchTerm]);
+      const allTeachers = day[searchTerm];
+      allTeachers.forEach((teacher) => {
+        uniqueElements.push(teacher)
+      });
+      // uniqueElements = [...new Set(day[searchTerm])];
+    });
+    [...week.fr].forEach((day) => {
+      // console.log(`week: ${day.Week} = ${day[searchTerm]}`);
+      // const str = day[searchTerm];
+      // let explodedElements = str.split(';');
+      // allElements = allElements.concat(explodedElements);
+      // uniqueElements.push(day[searchTerm]);
+      const allTeachers = day[searchTerm];
+      allTeachers.forEach((teacher) => {
+        uniqueElements.push(teacher)
+      });
+      // uniqueElements = [...new Set(day[searchTerm])];
+    });
+  });
+  let reallyUniqueElements = [...new Set(uniqueElements)]
+  return reallyUniqueElements;
+}
+
+
+function getUniqueElements(searchTerm) {
   let allElements = [];
   let uniqueElements;
   schedule.data.forEach((week) => {

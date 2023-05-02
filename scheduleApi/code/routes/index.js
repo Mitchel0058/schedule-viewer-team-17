@@ -28,6 +28,8 @@ router.options('/schedule', (req, res, next) => {
   res.sendStatus(200);
 });
 
+const baseUrl = '/api/v1';
+
 // get a collection of all the appointments and ou can use a query
 router.get('/schedule', cors(), getScheduleData);
 router.get('/teachers', cors(), getTeacher);
@@ -40,6 +42,6 @@ router.get('/properties', cors(), getProperties);
  * head url: domain/api/v1
  * /schedule/term/
  * /schedule/term/teachers
- * 
+ * /schedule/data (put) - add an wel structured json to the system
 */
 export default router;

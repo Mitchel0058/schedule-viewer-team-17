@@ -14,6 +14,18 @@ Base uri: `http:/localhost/api/v1/schdule`
 ## Viewer
 A viewer, responsible for viewing the schedule in different ways and filtering through the data
 
+## Error reporting (enhancement)
+Based on business rules; the error reporting container checks whether or not some rules are not met.
+
+Rules
+- availability of teachers
+- amount of students that fits in one room
+- Still VACATURES
+- Amount of hours spent by a teacher
+
+## Add your own excel (enhancement)
+Save an excel file to the system and let
+
 ## Installation
 
 Prerequsities
