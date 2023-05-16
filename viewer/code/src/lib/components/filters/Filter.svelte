@@ -16,7 +16,7 @@
     {:then data}
         <ul class="p-2">
             <li
-                class="inline-block m-1 border-2 rounded-md p-1 border-orange-400 bg-orange-400 text-sm bg-violet-400"
+                class="filter inline-block m-1 border-2 rounded-md p-1 bg-violet-400 text-sm"
                 data-filter="all"
                 data-filter-group={filter}
                 on:mousedown
@@ -25,7 +25,7 @@
             </li>
             {#each data as filterItem}
                 <li
-                    class="inline-block m-1 border-2 rounded-md p-1 border-orange-400 bg-orange-400 text-sm"
+                    class="filter inline-block m-1 border-2 rounded-md p-1 text-slate-300 bg-slate-50 border-slate-50 text-sm"
                     data-filter={filterItem}
                     data-filter-group={filter}
                     on:mousedown

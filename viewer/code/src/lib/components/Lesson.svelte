@@ -3,7 +3,7 @@
 </script>
 
 <div
-    id="lesson_1"
+    id={lesson.id}
     class="lesson border-2 border-slate-100 rounded-md m-4 flex flex-col {lesson.type ===
     'Exam'
         ? 'bg-red-400'
@@ -22,16 +22,19 @@
             </p>
         </div>
         <div class="flex justify-between">
-            <p data-card-property="course_name" class="text-sm font-light">
-                {lesson.course_name}
+            <p data-card-property="rooster_text" class="text-sm font-medium">
+                {lesson.rooster_text}
             </p>
             <p data-card-property="rooms" class="text-sm font-light">
                 {lesson.rooms}
             </p>
         </div>
         <div class="flex justify-between">
-            <p data-card-property="rooster_text" class="text-sm font-medium">
-                {lesson.rooster_text}
+            <p data-card-property="course_name" class="text-sm font-light">
+                {lesson.course_name}
+                <span data-card-property="module" class="text-xs font-light"
+                    >({lesson.module})</span
+                >
             </p>
         </div>
         <ul data-card-property="teachers">

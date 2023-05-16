@@ -2,77 +2,143 @@
     import Filter from "./components/filters/Filter.svelte";
 
     const selectedCardProperties = [];
+    let selectedFilters = {
+        teachers: [],
+        groups: [],
+    };
 
-    const handleCardfilter = (event) => {
-        // if all reset all filters
+    const checkIfFilterIsAlreadyInArray = (filter, filterGroup) => {
+        const properties = Object.keys(selectedFilters);
+        let inArray = false;
+        if (selectedFilters[filterGroup].includes(filter)) {
+            inArray = true;
+        }
+        return inArray;
+    };
 
-        // data-card-property="course-name"
-        const target = event.target;
-        console.log(target);
-        const chosenProperty = target.dataset.filter;
-        console.log("property:", chosenProperty.toLowerCase());
+    //find filters
+    const addFilter = (filterGroup, filter) => {
+        if (filterGroup in selectedFilters) {
+            selectedFilters[filterGroup].push(filter);
+        }
+    };
 
-        const allElements = document.querySelectorAll(
-            `[data-card-property=${chosenProperty}]`
-        );
-        [...allElements].forEach((property) => {
-            if (chosenProperty == property.dataset.cardProperty) {
-                property.classList.add("hidden");
-            }
+    //remove filter
+    const removeFilter = (filterGroup, filter) => {
+        let index = selectedFilters[filterGroup].indexOf(filter);
+        if (index !== -1) {
+            selectedFilters[filterGroup].splice(index, 1);
+        }
+    };
+
+    //change to colors of the filters
+    const applyFilters = () => {
+        const allLessons = document.querySelectorAll(".lesson");
+        // find all filters (as property) in selectedFilters object
+        const properties = Object.keys(selectedFilters);
+        // find all filters in DOM
+        const allFilters = [...document.querySelectorAll(".filter")];
+        const refToAllFilter = [
+            ...document.querySelectorAll('[data-filter="all"]'),
+        ];
+        // remove all selected filters
+        allFilters.forEach((element) => {
+            element.classList.remove("bg-violet-400");
         });
+        for (let i = 0; i < properties.length; i++) {
+            if (selectedFilters[properties[i]].length === 0) {
+                // find the specific filtergroup and the all filter.
+                refToAllFilter.forEach((element) => {
+                    // add the background to the element
+                    const myEl = properties[i];
+                    if (element.dataset.filterGroup === myEl) {
+                        element.classList.add("bg-violet-400");
+                    }
+                });
+            } else {
+                selectedFilters[properties[i]].forEach((filter) => {
+                    const ref = [
+                        ...document.querySelectorAll(
+                            `[data-filter="${filter}"]`
+                        ),
+                    ];
+                    ref.forEach((element) => {
+                        element.classList.remove("bg-slate-50");
+                        element.classList.add("bg-violet-400");
+                    });
+                });
+            }
+        }
+    };
+
+    const teacherInTeacherGroup = (teacher, teacherGroup) => {
+        let inArray = false;
+        if (teacherGroup.includes(teacher)) {
+            console.log(`${teacher} is in ${teacherGroup}`);
+            inArray = true;
+        }
+        return inArray;
+    };
+
+    // apply the filters to the schedule
+    const showLessonBasedOnFilter = () => {
+        const allLessons = document.querySelectorAll(".lesson");
+        // remove all filters
+        [...allLessons].forEach((lesson) => {
+            lesson.classList.remove("hidden");
+        });
+        // all available filters
+        const properties = Object.keys(selectedFilters);
+
+        // show only items in the filter
+        for (let i = 0; i < properties.length; i++) {
+            if (selectedFilters[properties[i]].length == 0) {
+                // of the property with the length 0 show all elements
+            } else {
+                // show only the lessons containing the filter
+                selectedFilters[properties[i]].forEach((filter) => {
+                    for (let j = 0; j < allLessons.length; j++) {
+                        // a node in the nodelist is an object with attributes to get the information
+                        // based on a variable instead of the . notatation use the
+                        // associative array notation
+                        // allLessons[j].datasest.properties[i] to ...
+                        const filtergroup =
+                            allLessons[j]["dataset"][properties[i]];
+                        const filtername = filter;
+
+                        if (!teacherInTeacherGroup(filtername, filtergroup)) {
+                            allLessons[j].classList.add("hidden");
+                        }
+                    }
+                });
+            }
+        }
     };
 
     const handleSelectedFilter = (event) => {
         const target = event.target;
-        /**
-         * If all is selected
-         *      remove all the hidden elements
-         */
-        // remove styling previous selected elements.
-        const previousSelectedFilters =
-            document.querySelectorAll(".bg-violet-400");
-        [...previousSelectedFilters].forEach((element) => {
-            element.classList.remove("bg-violet-400");
-        });
-        // add styling for currently selected element.
-        target.classList.add("bg-violet-400");
-        // get the filter name and the filter group
         const chosenFilter = target.dataset.filter;
         const chosenFilterGoup = target.dataset.filterGroup;
 
-        console.log("Chosen filter:", chosenFilter);
+        /**
+         * If chosenfilter is all
+         * - do not add it to the array
+         * else
+         */
         if (chosenFilter == "all") {
-            const hiddenElements = document.querySelectorAll(".hidden");
-            console.log(hiddenElements);
-            [...hiddenElements].forEach((property) => {
-                property.classList.remove("hidden");
-            });
+            selectedFilters = {
+                teachers: [],
+                groups: [],
+            };
         } else {
-            // apply the filter to each lesson
-            const allLessons = document.querySelectorAll(".lesson");
-            [...allLessons].forEach((lesson) => {
-                // if chosen filter are teachers
-                lesson.classList.remove("hidden");
-                if (chosenFilterGoup == "teachers") {
-                    // transfer dataset.teacher to an array and check if it is in an array
-                    let str = lesson.dataset.teachers;
-                    let explodedTeacher = str.split(";");
-                    if (!explodedTeacher.includes(chosenFilter)) {
-                        lesson.classList.add("hidden");
-                    }
-                }
-                // if chosen filter are groups
-                if (chosenFilterGoup == "groups") {
-                    if (lesson.dataset.groups != chosenFilter) {
-                        lesson.classList.add("hidden");
-                    }
-                }
-                // if chosen filter are week
-                if (chosenFilterGoup == "weeks") {
-                    //TODO: find weeks and hide or display them
-                }
-            });
+            if (checkIfFilterIsAlreadyInArray(chosenFilter, chosenFilterGoup)) {
+                removeFilter(chosenFilterGoup, chosenFilter);
+            } else {
+                addFilter(chosenFilterGoup, chosenFilter);
+            }
         }
+        applyFilters();
+        showLessonBasedOnFilter();
     };
 </script>
 

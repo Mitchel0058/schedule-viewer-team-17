@@ -6,7 +6,7 @@
 </script>
 
 <Nav />
-<main class="pt-8">
+<main class="pt-12">
   <div class="">
     <Filters />
   </div>
