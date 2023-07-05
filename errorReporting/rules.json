@@ -1,0 +1,38 @@
+{
+    "availability":[
+        {
+            "name":"Rimmert",
+            "days":[
+                {
+                    "nod": "mo",
+                    "pod": "full"
+                },
+                {
+                    "nod": "we",
+                    "pod": "full"
+                },
+                {
+                    "nod": "th",
+                    "pod": "mo"
+                }
+            ]
+        },
+        {
+            "name":"Rimmert",
+            "days":[
+                {
+                    "nod": "mo",
+                    "pod": "full"
+                },
+                {
+                    "nod": "we",
+                    "pod": "full"
+                },
+                {
+                    "nod": "th",
+                    "pod": "mo"
+                }
+            ]
+        }
+    ]
+}

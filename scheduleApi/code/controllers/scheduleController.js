@@ -61,6 +61,26 @@ export async function getTeacher(req, res) {
   // res.send(uniqueNames);
 }
 
+export async function getAllSchedules(req, res){
+  res.status(200).send('Please be more specific');
+}
+export async function getAllYears(req, res){
+  res.status(200).send('Please be more specific');
+}
+export async function getAllTerms(req, res){
+  res.status(200).send('Please be more specific');
+}
+export async function getScheduleDataPerTerm(req, res){
+  const year = req.params.yearid;
+  const term = req.params.termid;
+
+  /**
+   * 1. find the folder of the year
+   * 2. read the filename
+   * 2.1 if the filename contains the term -> serve the data
+   */
+
+}
 
 
 function getUniqueTeachers(searchTerm) {

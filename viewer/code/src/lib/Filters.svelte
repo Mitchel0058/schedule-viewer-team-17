@@ -106,6 +106,10 @@
                             allLessons[j]["dataset"][properties[i]];
                         const filtername = filter;
 
+                        // alles is hidden tenzij all is geselecteerd
+                        // kijk daarna welke filters er aan staan.
+                        // als de filternaam in de data-set-filter voorkomt laat hem dan zien.
+                        // als er twee filternamen staan kijk dan niet of de combinatie van die namen voorkomt maar of een van de twee voorkomt
                         if (!teacherInTeacherGroup(filtername, filtergroup)) {
                             allLessons[j].classList.add("hidden");
                         }
@@ -137,7 +141,9 @@
                 addFilter(chosenFilterGoup, chosenFilter);
             }
         }
+        //change colors
         applyFilters();
+        //
         showLessonBasedOnFilter();
     };
 </script>

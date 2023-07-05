@@ -5,7 +5,7 @@ An view on the schedule.
 A docker container responsible for tranferring an JSON output to different routes.
 
 ### Routes
-Base uri: `http:/localhost/api/v1/schdule`
+Base uri: `http:/localhost/api/v1/schedule`
 
 `schedule/term/{number}`
 

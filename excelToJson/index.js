@@ -29,7 +29,7 @@ const result = excelToJson({
     R: '{{R1}}',
   },
 });
-// console.log('result', result);
+
 // new json setup
 const schedule = {
   meta: {
@@ -58,6 +58,7 @@ let week = {
  * @param {arr} resultArr
  */
 function addToSchedule(resultArr) {
+  //TODO: this is the first week magic number -> best to change it based on the first rows weeknumber
   let oldWeek = 36;
   // foreach loop to get each element
   for (let index = 0; index < resultArr.sem3.length; index++) {
@@ -97,6 +98,7 @@ function addToSchedule(resultArr) {
 }
 
 addToSchedule(result);
+
 /**
  * Function to add the element's data to the right day
  * @param {*} currentDay 
@@ -124,6 +126,11 @@ function addElementToRightDay(currentDay, element) {
   }
 }
 
+/**
+ * Function to split the excel cell containing the teachers to an array
+ * @param {*} teachers 
+ * @returns 
+ */
 function splitTeachersString(teachers) {
   //console.log('wow a teacher', teachers);
   return teachers.split(';');
