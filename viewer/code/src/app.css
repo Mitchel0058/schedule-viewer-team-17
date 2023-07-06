@@ -7,8 +7,12 @@ nav {
     text-align:center;
 }
 
+li.error, h1 {
+    color: white !important;
+}
+
 h1 {
     font-weight: bold;
     text-align: center;
-    color: white !important;
 }
+
