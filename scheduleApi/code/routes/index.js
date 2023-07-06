@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { createTables } from '../controllers/dbSetupController.js';
 const router = express.Router();
 import {
   getGroups,
@@ -16,6 +17,9 @@ router.get('/', cors(), (req, res, next) => {
   res.json('Welcome to your local scheduler 🐶');
 });
 
+
+// Create tables in database
+router.post('/setupdb', createTables);
 
 /**
  * all appointments routes
