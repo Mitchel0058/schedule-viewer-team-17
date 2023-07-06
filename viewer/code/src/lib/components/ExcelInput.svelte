@@ -2,18 +2,17 @@
     <form
         method="post"
         action="http://localhost:3010/api/v2/excelToJson"
-        target="dummyframe"
-        name="excel"
+        enctype="multipart/form-data"
+        target="dummy"
     >
         <label for="fileSelect">Spreadsheet</label>
-        <br />
-        <input
-            id="fileSelect"
-            type="file"
-            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-        />
-        <br />
-        <input type="submit" value="Submit" />
+        <input id="fileSelect" type="file" name="excel" />
+        <button type="submit" value="Submit"> upload </button>
     </form>
-    <iframe name="dummyframe" id="dummyframe" style="display: none;" title="dummy" />
+    <iframe
+        name="dummyframe"
+        id="dummyframe"
+        style="display: none;"
+        title="dummy"
+    />
 </div>
