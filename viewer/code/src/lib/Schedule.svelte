@@ -29,12 +29,12 @@
     }
 
     .button-container button {
-        border: 2px solid blue;
-        background-color: rgb(12, 186, 245);
+        background-color: rgb(0, 159, 227);
         color: white;
         padding: 10px 20px;
         margin: 0 10px;
         cursor: pointer;
+        border-radius: 0.375rem;
     }
 </style>
 
