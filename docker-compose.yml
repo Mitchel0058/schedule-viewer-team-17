@@ -11,6 +11,8 @@ services:
       - "3010:3010"
     working_dir: /usr/src/app
     command: bash -c "npm install && npm run dev"
+    depends_on:
+      - db
   frontend:
     container_name: viewer
     build: ./viewer
@@ -22,7 +24,24 @@ services:
       - "3020:3020"
     working_dir: /usr/src/app
     command: bash -c "npm install && npm run dev"
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=schedule
+      - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 networks:
   scheduleViewer:
     driver: bridge
+
+volumes:
+  db:
+    driver: local
