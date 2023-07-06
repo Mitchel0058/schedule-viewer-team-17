@@ -1,30 +1,19 @@
 # Schedule viewer
-An view on the schedule.
+This is a project aimed at displaying schedule information for the HBO-ICT program of the HZ.
 
-## Schedule API
-A docker container responsible for tranferring an JSON output to different routes.
+It contains multiple containers / services
 
-### Routes
-Base uri: `http:/localhost/api/v1/schedule`
+## excelToJSON
+This project parses an excel to workable json file. This is currently not a micro service that runs in the docker environment. This service should be combined with the ScheduleAPI (container 1)
 
-`schedule/term/{number}`
+## Container 1 - Schedule API
+A docker container responsible for tranferring an JSON output via different routes.
 
-`schedule/term/{number}`
-
-## Viewer
+## Container 2 - Viewer
 A viewer, responsible for viewing the schedule in different ways and filtering through the data
 
-## Error reporting (enhancement)
-Based on business rules; the error reporting container checks whether or not some rules are not met.
-
-Rules
-- availability of teachers
-- amount of students that fits in one room
-- Still VACATURES
-- Amount of hours spent by a teacher
-
-## Add your own excel (enhancement)
-Save an excel file to the system and let
+## Container 3 - Error reporting (enhancement)
+Based on business rules; the error reporting container checks whether or not some rules are not met. This container is not working at the moment.
 
 ## Installation
 

@@ -1,5 +1,4 @@
 # Viewer
-
 The viewer is currently written in Svelte; however it is better to change it to Sveltekit
 
 ## Status
@@ -7,7 +6,6 @@ The viewer is currently written in Svelte; however it is better to change it to 
 - [ ] Advanced filtering
 - [ ] Show different quartiles/semesters/terms
 - [ ] implement error reporting from the error reporting microservice
-
 
 ### Filtering
 For now the basic filtering is set up.

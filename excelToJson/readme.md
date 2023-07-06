@@ -8,6 +8,8 @@ In the future we want this microservice to parse any excel file you throw at it.
 
 - (show the column names) - what columns do you want parse
 - what is the meta data of the json file
+- at the final step it does not store the data in a JSON file but in a sqlite db.
+- maybe this service can be combined with the scheduleApi microservices that serves data out of the JSON file.
 
 ## Routes
 We probably want one rout to rule them all:
