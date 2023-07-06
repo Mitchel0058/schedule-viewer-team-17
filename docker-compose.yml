@@ -25,6 +25,7 @@ services:
     working_dir: /usr/src/app
     command: bash -c "npm install && npm run dev"
   db:
+    container_name: db-1
     image: mysql:8.0
     cap_add:
       - SYS_NICE

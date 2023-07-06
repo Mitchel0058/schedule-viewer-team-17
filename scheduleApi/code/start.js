@@ -16,7 +16,7 @@ async function startServer() {
   let connection;
   try {
     connection = await mysql.createConnection({
-      host: 'schedule-viewer-team-17-db-1', // replace these with your own values
+      host: 'db-1', // replace these with your own values
       user: 'root',
       password: 'mauFJcuf5dhRMQrjj',
       database: 'schedule'

@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { createTables } from '../controllers/dbSetupController.js';
+import {setupTables} from '../controllers/dbController.js';
 const router = express.Router();
 import {
   getGroups,
@@ -19,7 +19,7 @@ router.get('/', cors(), (req, res, next) => {
 
 
 // Create tables in database
-router.post('/setupdb', createTables);
+router.post('/setupdb', setupTables);
 
 /**
  * all appointments routes
