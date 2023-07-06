@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 const router = express.Router();
+import fileupload from "express-fileupload";
+router.use(fileupload());
+
 import {
   getGroups,
   getProperties,
@@ -8,7 +11,8 @@ import {
   getAllSchedules,
   getAllYears,
   getAllTerms,
-  getScheduleDataPerTerm
+  getScheduleDataPerTerm,
+  excelToJson
 } from '../controllers/scheduleController.js';
 
 // root level route, this one is optional
@@ -42,12 +46,17 @@ router.get('/groups', cors(), getGroups);
 router.get('/weeks', cors(), getWeeks);
 router.get('/properties', cors(), getProperties);
 
+
 // Version 2
 const baseUrlV2 = '/api/v2';
 router.get(`${baseUrlV2}/schedule`, cors(), getAllSchedules);
 router.get(`${baseUrlV2}/schedule/year`, cors(), getAllYears);
 router.get(`${baseUrlV2}/schedule/year/:yearid/term`, cors(), getAllTerms);
 router.get(`${baseUrlV2}/schedule/year/:yearid/term/:termid`, cors(), getScheduleDataPerTerm);
+router.post(`${baseUrlV2}/excelToJson`, cors(), excelToJson);
+router.get(`${baseUrlV2}/excelToJson`, cors(), (req, res, next) => {
+  res.json('Welcome to your local scheduler 🐶');
+});
 
 
 //better url's: 

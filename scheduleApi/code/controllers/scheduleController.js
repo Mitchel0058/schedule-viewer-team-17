@@ -1,5 +1,33 @@
 import schedule from '../data/output.json' assert { type: 'json' };
 
+export async function excelToJson(req, res) {
+  let sampleFile;
+  let uploadPath;
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+    console.log("NO FILE AAAAAAAAA");
+    return
+    // return res.status(400).send('No files were uploaded.');
+  }
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  sampleFile = req.files.sampleFile;
+  uploadPath = __dirname + '/somewhere/on/your/server/' + sampleFile.name;
+
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv(uploadPath, function (err) {
+    if (err)
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
+  });
+
+  // res.send(418);
+  // console.log(req);
+  // console.log(req.body, req.file);
+  // console.log("gteste");
+}
+
 export async function getScheduleData(req, res) {
   res.send(schedule);
 }
@@ -61,16 +89,16 @@ export async function getTeacher(req, res) {
   // res.send(uniqueNames);
 }
 
-export async function getAllSchedules(req, res){
+export async function getAllSchedules(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getAllYears(req, res){
+export async function getAllYears(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getAllTerms(req, res){
+export async function getAllTerms(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getScheduleDataPerTerm(req, res){
+export async function getScheduleDataPerTerm(req, res) {
   const year = req.params.yearid;
   const term = req.params.termid;
 
@@ -81,7 +109,6 @@ export async function getScheduleDataPerTerm(req, res){
    */
 
 }
-
 
 function getUniqueTeachers(searchTerm) {
   //let allElements = [];
@@ -152,7 +179,6 @@ function getUniqueTeachers(searchTerm) {
   let reallyUniqueElements = [...new Set(uniqueElements)]
   return reallyUniqueElements;
 }
-
 
 function getUniqueElements(searchTerm) {
   let allElements = [];
