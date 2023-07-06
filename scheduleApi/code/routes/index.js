@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import {setupTables} from '../controllers/dbController.js';
+import {saveJsonToDB, setupTables} from '../controllers/dbController.js';
+import multer from 'multer';
 const router = express.Router();
 import {
   getGroups,
@@ -16,6 +17,21 @@ import {
 router.get('/', cors(), (req, res, next) => {
   res.json('Welcome to your local scheduler 🐶');
 });
+
+// save excel file to storage
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
+
+// save excel file to database
+router.post('/excelToJson', upload.single('excelFile'), saveJsonToDB);
 
 
 // Create tables in database
