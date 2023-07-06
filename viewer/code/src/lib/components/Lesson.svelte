@@ -17,7 +17,9 @@
             <p data-card-property="start" class="font-medium">
                 <!-- {console.log(lesson.start)}
                 {console.log(lesson.end)} -->
-                {lesson.start.slice(0, 2)}:{lesson.start.slice(2)} - {lesson.end.slice(0, 2)}:{lesson.end.slice(2)}
+                
+                {lesson.start.slice(0, 2)}:{lesson.start.slice(2)} - {lesson.end.slice(0, 2)} :  {lesson.end.slice(2)}
+
             </p>
             <p data-card-property="groups" class="font-medium">
                 {lesson.groups}
