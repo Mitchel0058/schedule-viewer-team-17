@@ -17,7 +17,7 @@
                     "day": 4,
                     "dow": "Mo",
                     "start": "0900",
-                    "end": 1100,
+                    "end": "1100",
                     "time": 120,
                     "course_code": "CU75016V1",
                     "course_name": "UVE",

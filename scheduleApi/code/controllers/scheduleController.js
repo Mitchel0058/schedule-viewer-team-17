@@ -1,5 +1,9 @@
 import schedule from '../data/output.json' assert { type: 'json' };
 
+export async function excelToJson(req, res) {
+  console.log(req.files)
+}
+
 export async function getScheduleData(req, res) {
   res.send(schedule);
 }
@@ -61,16 +65,16 @@ export async function getTeacher(req, res) {
   // res.send(uniqueNames);
 }
 
-export async function getAllSchedules(req, res){
+export async function getAllSchedules(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getAllYears(req, res){
+export async function getAllYears(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getAllTerms(req, res){
+export async function getAllTerms(req, res) {
   res.status(200).send('Please be more specific');
 }
-export async function getScheduleDataPerTerm(req, res){
+export async function getScheduleDataPerTerm(req, res) {
   const year = req.params.yearid;
   const term = req.params.termid;
 
@@ -81,7 +85,6 @@ export async function getScheduleDataPerTerm(req, res){
    */
 
 }
-
 
 function getUniqueTeachers(searchTerm) {
   //let allElements = [];
@@ -152,7 +155,6 @@ function getUniqueTeachers(searchTerm) {
   let reallyUniqueElements = [...new Set(uniqueElements)]
   return reallyUniqueElements;
 }
-
 
 function getUniqueElements(searchTerm) {
   let allElements = [];
