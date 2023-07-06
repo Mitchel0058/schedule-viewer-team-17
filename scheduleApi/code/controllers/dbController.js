@@ -1,4 +1,4 @@
-import { createTables } from '../adapters/dbAdapter';
+import { createTables } from '../adapters/dbAdapter.js';
 
 export async function setupTables(req, res) {
     const connection = req.app.locals.connection;
