@@ -15,12 +15,15 @@
     <div class="lesson_head w-full p-4 rounded-md hover:bg-red-300">
         <div class="flex justify-between">
             <p data-card-property="start" class="font-medium">
-                {lesson.start} - {lesson.end}
+                <!-- {console.log(lesson.start)}
+                {console.log(lesson.end)} -->
+                {lesson.start.slice(0, 2)}:{lesson.start.slice(2)} - {lesson.end.slice(0, 2)}:{lesson.end.slice(2)}
             </p>
             <p data-card-property="groups" class="font-medium">
                 {lesson.groups}
             </p>
         </div>
+        
         <div class="flex justify-between">
             <p data-card-property="rooster_text" class="text-sm font-medium">
                 {lesson.rooster_text}
