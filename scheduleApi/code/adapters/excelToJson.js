@@ -141,7 +141,7 @@ var jsonContent = JSON.stringify(schedule);
 // console.log('the stringified content', jsonContent);
 
 // write the json file to the file system
-fs.writeFile('output.json', jsonContent, 'utf8', function (err) {
+fs.writeFile('outpgut.json', jsonContent, 'utf8', function (err) {
   if (err) {
     console.log('An error occured while writing JSON Object to File.');
     return console.log(err);
