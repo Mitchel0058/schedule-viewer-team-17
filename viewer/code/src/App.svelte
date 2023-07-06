@@ -3,12 +3,17 @@
   import "./app.css";
   import Filters from "./lib/Filters.svelte";
   import Nav from "./lib/components/Nav.svelte";
+    import ExcelInput from "./lib/components/ExcelInput.svelte";
 </script>
 
 <Nav />
 <main class="pt-12">
   <div class="">
     <Filters />
+  </div>
+
+  <div class="">
+    <ExcelInput />
   </div>
 
   <div class="">
