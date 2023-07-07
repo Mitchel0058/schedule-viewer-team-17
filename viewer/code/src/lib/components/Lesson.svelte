@@ -6,8 +6,8 @@
     id={lesson.id}
     class="lesson border-2 border-slate-100 rounded-md m-4 flex flex-col {lesson.type ===
     'Exam'
-        ? 'bg-blue-400'
-        : 'bg-blue-100'}"
+        ? 'bg-red-400'
+        : 'bg-blue-300'}"
     on:mousedown
     data-teachers={lesson.teachers}
     data-groups={lesson.groups}

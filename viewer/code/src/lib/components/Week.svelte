@@ -15,7 +15,7 @@
 
 <div class="week p-4 m-4">
     <div class="text-center mb-20">
-        <h3 class="text-6xl bg-lime-200 inline-block p-6 rounded-xl text-center" id={week.weeknr}>{week.weeknr}</h3>
+        <h3 class="text-6xl bg-blue-200 inline-block p-6 rounded-xl text-center" id={week.weeknr}>{week.weeknr}</h3>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-5">
         <div class="mo">
